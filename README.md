@@ -132,6 +132,11 @@ docker run -d -p 9090:80 --network=myNet --name web3 web:2
 ## `docker compose` 만들어 보기
 
 1. 데이터베이스 컨테이너 `실행` 해보기
++ `docker run` 사용해 보기
 ```
 docker run -d -p 13306:3306 -e MARIADB_ROOT_PASSWORD=1234 mariadb:11.5.2
+```
++ `docker compose` 실행 하기
+```
+docker compose up -d
 ```
