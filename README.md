@@ -117,6 +117,14 @@ docker network ls
 2. 도커 Network의 드라이버 중 `bridge`의 정보 확인
 ```
 docker network inspect [NETWORK ID]
-``
+```
 
+3. 도커 Network를 `생성` 하기
+```
+docker network create myNet
+```
 
+4. 도커 컨테이너 `실행` 할때 network 연결해주기
+```
+docker run -d -p 9090:80 --network=myNet --name web3 web:2
+```
