@@ -140,3 +140,51 @@ docker run -d -p 13306:3306 -e MARIADB_ROOT_PASSWORD=1234 mariadb:11.5.2
 ```
 docker compose up -d
 ```
++ `docker compose`에서 `network` 설정 하기
+```yml
+networks:
+  myNet:
+    driver: bridge
+    ipam:
+      config:
+        - subnet: 192.168.100.0/24
+          gateway: 192.168.100.254
+```
++ `service`에 적용 시 `ip` 설정
+```yml
+services:
+  db:
+    container_name: db
+    image: mariadb:11.5.2
+    restart: always
+    ports: 
+      - 23306:3306
+    environment:
+      - MARIADB_ROOT_PASSWORD=4321
+    networks:
+      myNet:
+        ipv4_address: 192.168.100.10
+```
++ `compose.yml` 전체 내용
+```yml
+services:
+  db:
+    container_name: db
+    image: mariadb:11.5.2
+    restart: always
+    ports: 
+      - 23306:3306
+    environment:
+      - MARIADB_ROOT_PASSWORD=4321
+    networks:
+      myNet:
+        ipv4_address: 192.168.100.10
+
+networks:
+  myNet:
+    driver: bridge
+    ipam:
+      config:
+        - subnet: 192.168.100.0/24
+          gateway: 192.168.100.254
+```
