@@ -106,3 +106,17 @@ CMD         : 도커 컨테이너 시작 이후 실행될 명령어
 > 도커의 저장소 (도커 내부의 `Volumes` 영역 공간)
 > 로컬의 저장소 (컴퓨터의 HDD 또는 SSD)
 ```
+---
+## 도커 `network` 알아보기
+
+1. 도커 호스트에 있는 `network` 목록 확인
+```
+docker network ls
+```
+
+2. 도커 Network의 드라이버 중 `bridge`의 정보 확인
+```
+docker network inspect [NETWORK ID]
+``
+
+
